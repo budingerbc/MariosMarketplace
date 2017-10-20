@@ -24,6 +24,10 @@ namespace MariosMarketplace
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddEntityFrameworkMySql()
+                    .AddDbContext<MariosMarketplaceContext>(options =>
+                                              options
+                                                   .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
