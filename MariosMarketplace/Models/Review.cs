@@ -16,6 +16,7 @@ namespace MariosMarketplace.Models
         public string Content { get; set; }
         public int Rating { get; set; }
         public int ProductId { get; set; }
+        public virtual Product Category { get; set; }
 
         public override bool Equals(System.Object otherProduct)
         {

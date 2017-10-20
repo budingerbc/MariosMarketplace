@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MariosMarketplace.Models
 {
-    public class ToDoListContext : DbContext
+    public class MariosMarketplaceContext : DbContext
     {
-        public DbSet<Product> Products { get; set; }
-        public DbSet<Review> Reviews { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Review> Reviews { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder
