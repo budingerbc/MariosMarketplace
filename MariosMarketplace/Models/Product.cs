@@ -18,8 +18,11 @@ namespace MariosMarketplace.Models
 
         [Key]
         public int ProductId { get; set; }
+        [Required(ErrorMessage = "Product name is required")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Price of product required")]
         public double Price { get; set; }
+        [Required(ErrorMessage = "Country of Origin required")]
         public string CountryOrigin { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
 

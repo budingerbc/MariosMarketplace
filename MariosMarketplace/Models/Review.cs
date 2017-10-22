@@ -12,28 +12,33 @@ namespace MariosMarketplace.Models
     {
         [Key]
         public int ReviewId { get; set; }
+        [Required(ErrorMessage = "Review author required")]
         public string Author { get; set; }
+        [Required(ErrorMessage = "Review body required")]
+        [Range(50, 250)]
         public string Content { get; set; }
+        [Required(ErrorMessage = "Rating from 1 to 5 required")]
+        [Range(1, 5)]
         public int Rating { get; set; }
         public int ProductId { get; set; }
-        public virtual Product Category { get; set; }
+        public virtual Product Product { get; set; }
 
-        public override bool Equals(System.Object otherProduct)
+        public override bool Equals(System.Object otherReview)
         {
-            if (!(otherProduct is Product))
+            if (!(otherReview is Review))
             {
                 return false;
             }
             else
             {
-                Product newProduct = (Product)otherProduct;
-                return this.ProductId.Equals(newProduct.ProductId);
+                Review newReview = (Review)otherReview;
+                return this.ReviewId.Equals(newReview.ReviewId);
             }
         }
 
         public override int GetHashCode()
         {
-            return this.ProductId.GetHashCode();
+            return this.ReviewId.GetHashCode();
         }
     }
 }

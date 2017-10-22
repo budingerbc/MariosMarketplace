@@ -11,9 +11,10 @@ using System;
 namespace MariosMarketplace.Migrations
 {
     [DbContext(typeof(MariosMarketplaceContext))]
-    partial class MariosMarketplaceContextModelSnapshot : ModelSnapshot
+    [Migration("20171022005602_UpdateProduct")]
+    partial class UpdateProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
