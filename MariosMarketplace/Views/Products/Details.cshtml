@@ -1,0 +1,26 @@
+﻿@model MariosMarketplace.Models.Product
+
+@{ 
+    ViewData["Title"] = "Product - Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Product - Details</h1>
+
+<div class="card">
+    <div class="card-header">
+        <h2>@Model.Name<span class="card-header-float-right">Review Average</span></h2>
+        <h5>$@Model.Price</h5>
+    </div>
+    @foreach(var review in Model.Reviews)
+    {
+        <div class="card">
+            <h5 class="card-title">Review by @review.Author<span class="card-header-float-right">Rating - @review.Rating</span></h5>
+            <p class="card-text">@review.Content</p>
+        </div>
+
+    }
+    <div class="card-block">
+        <div class="card"></div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+﻿@model MariosMarketplace.Models.Product
+
+@{
+    ViewData["Title"] = "Product - Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Product - Delete</h1>
+
+<h3>Confirm deletion for @Model.Name?</h3>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <input type="button" value="Cancel" class="btn bnn-warning" onclick="location.href='@Url.Action("Index")'" />
+}

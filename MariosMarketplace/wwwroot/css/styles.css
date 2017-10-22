@@ -4,3 +4,7 @@
 .jumbotron {
     text-align: center;
 }
+
+.card-header-float-right {
+    float: right;
+}

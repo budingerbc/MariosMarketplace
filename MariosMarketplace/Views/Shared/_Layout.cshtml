@@ -11,6 +11,17 @@
     <div class="jumbotron">
         <h1>Mario's Marketplace</h1>
     </div>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+        <a class="navbar-brand">@Html.ActionLink("Home", "Index", "Home")</a>
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active">@Html.ActionLink("Products", "Index", "Products")</a>
+        </div>
+        <div class="navbar-nav">
+            <button class="btn btn-success button-add" type="button" onclick="location.href='@Url.Action("Create", "Products")'">
+                Add Product
+            </button>
+        </div>
+    </nav>
     <div class="container">
         @RenderBody()
     </div>

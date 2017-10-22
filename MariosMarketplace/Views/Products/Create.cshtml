@@ -1,0 +1,21 @@
+﻿@model MariosMarketplace.Models.Product
+
+@{ 
+    ViewData["Title"] = "Marketplace Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Product - Create</h1>
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+    
+    @Html.LabelFor(model => model.Price)
+    @Html.EditorFor(model => model.Price)
+
+    @Html.LabelFor(model => model.CountryOrigin)
+    @Html.EditorFor(model => model.CountryOrigin)
+
+    <input class="btn btn-info" type="submit" value="Create" />
+}
