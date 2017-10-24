@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MariosMarketplace", "MariosMarketplace\MariosMarketplace.csproj", "{B06E1D8F-2B73-42CD-9ADA-E715AE2020FC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MariosMarketplace.Tests", "MariosMarketplace.Tests\MariosMarketplace.Tests.csproj", "{51961EB1-B5A3-4875-985E-FB3946071355}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B06E1D8F-2B73-42CD-9ADA-E715AE2020FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B06E1D8F-2B73-42CD-9ADA-E715AE2020FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B06E1D8F-2B73-42CD-9ADA-E715AE2020FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51961EB1-B5A3-4875-985E-FB3946071355}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51961EB1-B5A3-4875-985E-FB3946071355}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51961EB1-B5A3-4875-985E-FB3946071355}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51961EB1-B5A3-4875-985E-FB3946071355}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
