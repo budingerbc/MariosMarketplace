@@ -28,9 +28,17 @@ namespace MariosMarketplace.Controllers
         [HttpPost]
         public IActionResult Create(Review review)
         {
-            db.Reviews.Add(review);
-            db.SaveChanges();
-            return RedirectToAction("Index", "Products");
+            if (ModelState.IsValid)
+            {
+                db.Reviews.Add(review);
+                db.SaveChanges();
+                return RedirectToAction("Details", "Products", new { id = review.ProductId });
+            }
+            else
+            {
+                return View();
+            }
+
         }
     }
 }

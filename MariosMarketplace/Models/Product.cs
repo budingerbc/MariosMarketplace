@@ -43,5 +43,17 @@ namespace MariosMarketplace.Models
         {
             return this.ProductId.GetHashCode();
         }
+
+        public double CalculateAverageRating()
+        {
+            int RatingSum = 0;
+
+            foreach(var review in this.Reviews)
+            {
+                RatingSum += review.Rating;
+            }
+
+            return ((double)RatingSum / this.Reviews.Count());
+        }
     }
 }

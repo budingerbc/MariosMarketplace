@@ -8,6 +8,8 @@
 <h1>Review - Create</h1>
 @using (Html.BeginForm())
 {
+    <input type="hidden" name="ProductId" value="@ViewBag.product.ProductId" />
+
     @Html.LabelFor(model => model.Author)
     @Html.EditorFor(model => model.Author)
 
@@ -17,13 +19,10 @@
     @Html.LabelFor(model => model.Rating)
     @Html.EditorFor(model => model.Rating)
 
-
-    
-
     <input class="btn btn-info" type="submit" value="Create" />
 
 }
 
 <p>@ViewBag.product.Name + @ViewBag.product.ProductId</p>
 
-@*<input type="button" class="btn btn-warning" value="Back" onclick="location.href='@Url.Action("Details", "Products", new { id = @Model.ProductId })'" />*@
+<input type="button" class="btn btn-warning" value="Back" onclick="location.href='@Url.Action("Details", "Products", new { id = @ViewBag.product.ProductId })'" />

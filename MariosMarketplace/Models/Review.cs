@@ -15,10 +15,10 @@ namespace MariosMarketplace.Models
         [Required(ErrorMessage = "Review author required")]
         public string Author { get; set; }
         [Required(ErrorMessage = "Review body required")]
-        [Range(50, 250)]
+        [StringLength(250, MinimumLength  = 50)]
         public string Content { get; set; }
         [Required(ErrorMessage = "Rating from 1 to 5 required")]
-        [Range(1, 5)]
+        [Range(1, 5, ErrorMessage = "Rating must be between 1 and 5")]
         public int Rating { get; set; }
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }

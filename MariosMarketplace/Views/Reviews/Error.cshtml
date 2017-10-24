@@ -1,0 +1,17 @@
+﻿@model MariosMarketplace.Models.Review
+
+@{
+    ViewData["Title"] = "Marketplace Products";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Input Error</h1>
+<h3>For review posts, please adhere to the following guidelines:</h3>
+
+<ul>
+    <li>Author must be filled out</li>
+	<li>Content body must be between 50 and 250 characters</li>
+	<li>Review rating must be between 1 and 5 (inclusive)</li>
+</ul>
+
+<input type="button" class="btn btn-warning" value="Back" onclick="location.href='@Url.Action("Details", "Products", new { id = @ViewBag.product.ProductId })'" />

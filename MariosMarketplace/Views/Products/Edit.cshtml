@@ -6,3 +6,20 @@
 }
 
 <h1>Product - Edit</h1>
+
+@using (Html.BeginForm())
+{
+    <input type="hidden" name="ProductId" value="@Model.ProductId" />
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Price)
+    @Html.EditorFor(model => model.Price)
+
+    @Html.LabelFor(model => model.CountryOrigin)
+    @Html.EditorFor(model => model.CountryOrigin)
+
+    <input class="btn btn-info" type="submit" value="Update" />
+    <input class="btn btn-warning" type="submit" value="Back" onclick="location.href='@Url.Action("Index", "Products")'" />
+}
