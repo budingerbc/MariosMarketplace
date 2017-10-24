@@ -36,7 +36,7 @@ namespace MariosMarketplace.Controllers
             }
             else
             {
-                return View();
+                return View("Error", review);
             }
 
         }

@@ -1,7 +1,7 @@
 ﻿@model MariosMarketplace.Models.Review
 
 @{
-    ViewData["Title"] = "Marketplace Products";
+    ViewData["Title"] = "Input Error";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -14,4 +14,4 @@
 	<li>Review rating must be between 1 and 5 (inclusive)</li>
 </ul>
 
-<input type="button" class="btn btn-warning" value="Back" onclick="location.href='@Url.Action("Details", "Products", new { id = @ViewBag.product.ProductId })'" />
+<input type="button" class="btn btn-warning" value="Back" onclick="location.href='@Url.Action("Create", "Reviews", new { id = Model.ProductId })'" />
