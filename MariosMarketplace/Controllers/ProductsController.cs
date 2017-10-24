@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using MariosMarketplace.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Globalization;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,11 +13,23 @@ namespace MariosMarketplace.Controllers
 {
     public class ProductsController : Controller
     {
-        private MariosMarketplaceContext db = new MariosMarketplaceContext();
+        private IProductRepository productRepo;
+
+        public ProductsController(IProductRepository thisRepo = null)
+        {
+            if (thisRepo == null)
+            {
+                this.productRepo = new EFProductRepository();
+            }
+            else
+            {
+                this.productRepo = thisRepo;
+            }
+        }
 
         public IActionResult Index()
         {
-            return View(db.Products.ToList());
+            return View(productRepo.Products.ToList());
         }
 
         public IActionResult Create()
@@ -29,43 +40,40 @@ namespace MariosMarketplace.Controllers
         [HttpPost]
         public IActionResult Create(Product product)
         {
-            db.Products.Add(product);
-            db.SaveChanges();
+            productRepo.Save(product);
             return RedirectToAction("Index");
         }
 
         public IActionResult Details(int id)
         {
-            var thisProduct = db.Products.Include(products => products.Reviews).FirstOrDefault(products => products.ProductId == id);
+            Product thisProduct = productRepo.Products.Include(products => products.Reviews).FirstOrDefault(products => products.ProductId == id);
             return View(thisProduct);
         }
 
         public IActionResult Edit(int id)
         {
-            var thisProduct = db.Products.FirstOrDefault(products => products.ProductId == id);
+            Product thisProduct = productRepo.Products.FirstOrDefault(products => products.ProductId == id);
             return View(thisProduct);
         }
         
         [HttpPost]
         public IActionResult Edit(Product product)
         {
-            db.Entry(product).State = EntityState.Modified;
-            db.SaveChanges();
+            productRepo.Edit(product);
             return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int id)
         {
-            var thisProduct = db.Products.FirstOrDefault(products => products.ProductId == id);
+            Product thisProduct = productRepo.Products.FirstOrDefault(products => products.ProductId == id);
             return View(thisProduct);
         }
 
         [HttpPost, ActionName("Delete")]
         public IActionResult DeleteConfirmed(int id)
         {
-            var thisProduct = db.Products.FirstOrDefault(products => products.ProductId == id);
-            db.Products.Remove(thisProduct);
-            db.SaveChanges();
+            Product thisProduct = productRepo.Products.FirstOrDefault(products => products.ProductId == id);
+            productRepo.Remove(thisProduct);
             return RedirectToAction("Index");
         }
     }

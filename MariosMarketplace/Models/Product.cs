@@ -35,7 +35,12 @@ namespace MariosMarketplace.Models
             else
             {
                 Product newProduct = (Product)otherProduct;
-                return this.ProductId.Equals(newProduct.ProductId);
+                bool IdEquality = this.ProductId == newProduct.ProductId;
+                bool NameEquality = this.Name == newProduct.Name;
+                bool PriceEquality = this.Price == newProduct.Price;
+                bool CountryEquality = this.CountryOrigin == newProduct.CountryOrigin;
+                return (IdEquality && NameEquality
+                    && PriceEquality && CountryEquality);
             }
         }
 
