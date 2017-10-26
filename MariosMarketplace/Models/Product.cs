@@ -26,6 +26,15 @@ namespace MariosMarketplace.Models
 			this.Reviews = new HashSet<Review>();
 		}
 
+        public Product(string name, double price, string country, int id = 0)
+        {
+            Name = name;
+            Price = price;
+            CountryOrigin = country;
+            ProductId = id;
+        }
+
+
         public override bool Equals(System.Object otherProduct)
         {
             if (!(otherProduct is Product))

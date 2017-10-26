@@ -43,5 +43,11 @@ namespace MariosMarketplace.Models
             db.SaveChanges();
             return product;
         }
+
+        public void RemoveAll()
+        {
+            db.Products.RemoveRange(db.Products);
+            db.SaveChanges();
+        }
     }
 }
