@@ -35,12 +35,13 @@ namespace MariosMarketplace
         {
             loggerFactory.AddConsole();
 
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles();
+
 
             app.UseMvc(routes =>
             {
@@ -48,6 +49,8 @@ namespace MariosMarketplace
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseStaticFiles();
 
             app.Run(async (context) =>
             {

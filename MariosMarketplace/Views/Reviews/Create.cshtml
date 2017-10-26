@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Review - Create</h1>
+<h2>Add a review for @ViewBag.product.Name.ToLower()</h2>
 @using (Html.BeginForm())
 {
     <input type="hidden" name="ProductId" value="@ViewBag.product.ProductId" />
@@ -20,9 +20,6 @@
     @Html.EditorFor(model => model.Rating)
 
     <input class="btn btn-info" type="submit" value="Create" />
-
+    <input type="button" class="btn btn-warning" value="Back" onclick="location.href='@Url.Action("Details", "Products", new { id = @ViewBag.product.ProductId })'" />
 }
 
-<p>@ViewBag.product.Name + @ViewBag.product.ProductId</p>
-
-<input type="button" class="btn btn-warning" value="Back" onclick="location.href='@Url.Action("Details", "Products", new { id = @ViewBag.product.ProductId })'" />

@@ -20,23 +20,8 @@ namespace MariosMarketplace.Models
             }
         }
 
-
-
         public IQueryable<Review> Reviews
         { get { return db.Reviews; }}
-
-        public Review Edit(Review review)
-        {
-            db.Entry(review).State = EntityState.Modified;
-            db.SaveChanges();
-            return review;
-        }
-
-        public void Remove(Review review)
-        {
-            db.Reviews.Remove(review);
-            db.SaveChanges();
-        }
 
         public void RemoveAll()
         {

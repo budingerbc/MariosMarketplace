@@ -23,6 +23,20 @@ namespace MariosMarketplace.Models
         public int ProductId { get; set; }
         public virtual Product Product { get; set; }
 
+        public Review()
+        {
+            
+        }
+
+        public Review(string author, string content, int rating, int productId, int id = 0)
+        {
+            Author = author;
+            Content = content;
+            Rating = rating;
+            ProductId = productId;
+            ReviewId = id;
+        }
+
         public override bool Equals(System.Object otherReview)
         {
             if (!(otherReview is Review))

@@ -29,7 +29,7 @@ namespace MariosMarketplace.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
-            return View();
+            return View(reviewRepo.Reviews.ToList());
         }
 
         public IActionResult Create(int id)
@@ -51,7 +51,6 @@ namespace MariosMarketplace.Controllers
             {
                 return View("Error", review);
             }
-
         }
     }
 }

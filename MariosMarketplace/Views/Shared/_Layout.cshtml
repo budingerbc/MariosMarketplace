@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="~/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
 </head>
 <body>
     <div class="jumbotron">
@@ -16,10 +16,8 @@
         <div class="navbar-nav">
             <a class="nav-item nav-link active">@Html.ActionLink("Products", "Index", "Products")</a>
         </div>
-        <div class="navbar-nav">
-            <button class="btn btn-success button-add" type="button" onclick="location.href='@Url.Action("Create", "Products")'">
-                Add Product
-            </button>
+        <div class="navbar-nav navbar-right">
+            <a class="nav-item nav-link">@Html.ActionLink("Add Product", "Create", "Products")</a>
         </div>
     </nav>
     <div class="container">

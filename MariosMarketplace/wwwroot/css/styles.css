@@ -1,10 +1,12 @@
-﻿body {
-}
-
-.jumbotron {
+﻿.jumbotron {
     text-align: center;
 }
 
-.card-header-float-right {
-    float: right;
+.navbar-right {
+    margin-left: 50px;
+}
+
+h2 {
+    margin: 10px;
+    text-align: center;
 }
