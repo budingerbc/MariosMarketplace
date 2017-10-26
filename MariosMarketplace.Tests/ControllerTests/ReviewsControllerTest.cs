@@ -1,10 +1,10 @@
 ﻿using System;
-namespace MariosMarketplace.Tests.ControllerTests
+
+namespace MariosMarketplace.Tests
 {
-    public class EmptyClass
+    [TestClass]
+    public class EmptyClass : IDisposable
     {
-        public EmptyClass()
-        {
-        }
+        Mock<IReviews>
     }
 }

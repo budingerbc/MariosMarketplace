@@ -11,7 +11,21 @@ namespace MariosMarketplace.Controllers
 {
     public class ReviewsController : Controller
     {
-        private MariosMarketplaceContext db = new MariosMarketplaceContext();
+        private IReviewRepository reviewRepo;
+        private IProductRepository productRepo = new EFProductRepository();
+
+        public ReviewsController(IReviewRepository thisRepo = null)
+        {
+            if (thisRepo == null)
+            {
+                this.reviewRepo = new EFReviewsRepository();
+            }
+            else
+            {
+                this.reviewRepo = thisRepo;    
+            }
+        }
+
         // GET: /<controller>/
         public IActionResult Index()
         {
@@ -20,7 +34,7 @@ namespace MariosMarketplace.Controllers
 
         public IActionResult Create(int id)
         {
-            var thisProduct = db.Products.FirstOrDefault(products => products.ProductId == id);
+            var thisProduct = productRepo.Products.FirstOrDefault(products => products.ProductId == id);
             ViewBag.product = thisProduct;
             return View();
         }
@@ -30,8 +44,7 @@ namespace MariosMarketplace.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Reviews.Add(review);
-                db.SaveChanges();
+                reviewRepo.Save(review);
                 return RedirectToAction("Details", "Products", new { id = review.ProductId });
             }
             else
