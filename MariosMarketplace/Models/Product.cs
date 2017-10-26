@@ -11,11 +11,6 @@ namespace MariosMarketplace.Models
     [Table("Products")]
     public class Product
     {
-        public Product()
-        {
-            this.Reviews = new HashSet<Review>();
-        }
-
         [Key]
         public int ProductId { get; set; }
         [Required(ErrorMessage = "Product name is required")]
@@ -26,6 +21,11 @@ namespace MariosMarketplace.Models
         public string CountryOrigin { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
 
+		public Product()
+		{
+			this.Reviews = new HashSet<Review>();
+		}
+
         public override bool Equals(System.Object otherProduct)
         {
             if (!(otherProduct is Product))
@@ -35,12 +35,7 @@ namespace MariosMarketplace.Models
             else
             {
                 Product newProduct = (Product)otherProduct;
-                bool IdEquality = this.ProductId == newProduct.ProductId;
-                bool NameEquality = this.Name == newProduct.Name;
-                bool PriceEquality = this.Price == newProduct.Price;
-                bool CountryEquality = this.CountryOrigin == newProduct.CountryOrigin;
-                return (IdEquality && NameEquality
-                    && PriceEquality && CountryEquality);
+                return this.ProductId.Equals(newProduct.ProductId);
             }
         }
 
