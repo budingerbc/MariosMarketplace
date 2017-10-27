@@ -52,5 +52,21 @@ namespace MariosMarketplace.Controllers
                 return View("Error", review);
             }
         }
+
+        public IActionResult Delete(int productId, int reviewId)
+        {
+            var thisReview = reviewRepo.Reviews.FirstOrDefault(reviews => reviews.ReviewId == reviewId);
+            ViewBag.productId = productId;
+
+            return View(thisReview);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int productId, int reviewId)
+        {
+            Review thisReview = reviewRepo.Reviews.FirstOrDefault(reviews => reviews.ReviewId == reviewId);
+            reviewRepo.Delete(thisReview);
+            return RedirectToAction("Details", "Products", new { id = productId });
+        }
     }
 }

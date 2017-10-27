@@ -1,0 +1,16 @@
+﻿@model MariosMarketplace.Models.Review
+
+@{
+    ViewData["Title"] = "Product - Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Review - Delete</h2>
+
+<h3>Really delete @Model.Author's review?</h3>
+
+@using (Html.BeginForm())
+{
+    <input type="submit" value="Delete" class="btn btn-danger" />
+    <input type="button" class="btn btn-warning" value="Back" onclick="location.href='@Url.Action("Details", "Products", new { id = @ViewBag.ProductId })'" />
+}

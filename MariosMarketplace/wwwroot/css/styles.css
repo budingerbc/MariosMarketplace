@@ -53,3 +53,12 @@ h3.card-title.center {
     cursor: pointer;
     text-decoration: underline;
 }
+
+.delete-review {
+    max-width: 20%;
+}
+
+.review-list {
+    padding: 10px;
+    margin: 3px;
+}

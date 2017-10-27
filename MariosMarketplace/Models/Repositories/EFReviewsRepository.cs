@@ -35,5 +35,12 @@ namespace MariosMarketplace.Models
             db.SaveChanges();
             return review;
         }
+
+        public Review Delete(Review review)
+        {
+            db.Reviews.Remove(review);
+            db.SaveChanges();
+            return review;
+        }
     }
 }

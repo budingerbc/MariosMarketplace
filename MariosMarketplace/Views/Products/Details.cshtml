@@ -14,9 +14,17 @@
     </div>
     @foreach(var review in Model.Reviews)
     {
-        <div class="card">
+        <div class="card review-list">
             <h5 class="card-title">Review by @review.Author<span class="card-header-float-right">Rating - @review.Rating</span></h5>
             <p class="card-text">@review.Content</p>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div>
+                    <button class="btn btn-danger delete-review" onclick="location.href='@Url.Action("Delete", "Reviews", new { productId = Model.ProductId, reviewId = review.ReviewId })'">Delete</button>
+                </div>
+
+            }
+            
         </div>
     }
 </div>

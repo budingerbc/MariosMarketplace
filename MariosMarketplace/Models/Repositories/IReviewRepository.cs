@@ -7,6 +7,7 @@ namespace MariosMarketplace.Models
     {
         IQueryable<Review> Reviews { get; }
         Review Save(Review review);
+        Review Delete(Review review);
         void RemoveAll();
     }
 }
