@@ -19,9 +19,5 @@
 
   <ItemGroup>
     <Folder Include="Migrations\" />
-    <Folder Include="wwwroot\css\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Remove="wwwroot\css\styles.css" />
   </ItemGroup>
 </Project>

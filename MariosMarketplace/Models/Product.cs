@@ -62,7 +62,9 @@ namespace MariosMarketplace.Models
                 RatingSum += review.Rating;
             }
 
-            return ((double)RatingSum / this.Reviews.Count());
+            double avg = (double)RatingSum / this.Reviews.Count;
+
+            return (Math.Truncate(avg * 100) / 100);
         }
     }
 }
