@@ -21,11 +21,10 @@ namespace MariosMarketplace.Controllers
             List<Product> recentlyAdded = db.Products.OrderByDescending(product => product.ProductId).Take(3).ToList();
             List<Product> highlyRated = db.Products.Include(product => product.Reviews).OrderByDescending(review => review.CalculateAverageRating()).Take(3).ToList();
 
-            Dictionary<string, List<Product>> dict = new Dictionary<string, List<Product>>();
-            dict.Add("recent", recentlyAdded);
-            dict.Add("highlyRated", highlyRated);
+            ViewData["recent"] = recentlyAdded;
+            ViewData["highlyRated"] = highlyRated;
 
-            return View(dict);
+            return View();
         }
     }
 }

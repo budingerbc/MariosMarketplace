@@ -1,12 +1,74 @@
-﻿
+﻿@using MariosMarketplace.Models
+
 @{ 
     ViewData["Title"] = "Mario's Marketplace ";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    List<Product> recent = (List<Product>)ViewData["recent"];
+    List<Product> highlyRated = (List<Product>)ViewData["highlyRated"];
 }
 
-<div class="card">
+<div class="card recent-product-master-card">
     <div class="card-block">
-        <h3 class="card-title">Recently Added Products</h3>
-	 
+        <h3 class="card-title center">Recently Added Products</h3>
+        <div class="d-flex justify-content-center">
+            @foreach (var product in recent)
+            {
+                <div class="card recent-products">
+                    <div class="card-block">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th id="recent-products-table-head">@product.Name</th>
+                                    <th id="avg-rating">Avg. Rating</th>
+                                </tr>                                
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$@product.Price</td>
+                                    <td id="avg-rating-score">@product.CalculateAverageRating()</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr />
+                        <p>Freshly shipped from @product.CountryOrigin!</p>
+                    </div>
+                </div>
+            }
+        </div>
+
 	</div>
+</div>
+
+<div class="card recent-product-master-card">
+    <div class="card-block">
+        <h3 class="card-title center">Highest Rated Products</h3>
+        <div class="d-flex justify-content-center">
+            @foreach (var product in highlyRated)
+            {
+                <div class="card recent-products">
+                    <div class="card-block">
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th id="recent-products-table-head">@product.Name</th>
+                                    <th id="avg-rating">Avg. Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$@product.Price</td>
+                                    <td id="avg-rating-score">@product.CalculateAverageRating()</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <hr />
+                        <p>Freshly shipped from @product.CountryOrigin!</p>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
 </div>

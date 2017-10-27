@@ -10,3 +10,31 @@ h2 {
     margin: 10px;
     text-align: center;
 }
+
+.card.recent-product-master-card {
+    margin: 20px 5px;
+}
+
+.card.recent-products {
+    margin: 10px;
+}
+
+#recent-products-table-head {
+    padding-right: 50px;
+    background-color: antiquewhite;
+}
+
+#avg-rating {
+    text-align: right;
+    padding-left: 50px;
+    background-color: aliceblue;
+}
+
+#avg-rating-score {
+    text-align: right;
+    padding-left: 50px;
+}
+
+h3.card-title.center {
+    text-align: center;
+}
