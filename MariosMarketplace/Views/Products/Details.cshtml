@@ -5,12 +5,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.display-add-review').click(function () {
+            $.ajax({
+                type: 'GET',
+                url: '@Url.Action("Create", "Reviews", new { id = Model.ProductId })',
+                success: function (result) {
+                    $('#create-review').html(result)
+                }
+            });
+        });
+    });
+</script>
+
 <h2>Product - Details</h2>
+
+<div id="create-review"></div>
 
 <div class="card">
     <div class="card-header">
         <h2>@Model.Name<span class="card-header-float-right">Review Average: @Model.CalculateAverageRating()</span></h2>
-        <h5>$@Model.Price<span class="card-header-float-right"><button class="btn btn-info" onclick="location.href='@Url.Action("Create", "Reviews", new { id = @Model.ProductId })'">Add Review</button></span></h5>
+        <h5>$@Model.Price<span class="card-header-float-right"><button class="btn btn-info display-add-review">Add Review</button></span></h5>
     </div>
     @foreach(var review in Model.Reviews)
     {
