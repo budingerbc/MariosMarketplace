@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+@using System.Security.Claims
+
 <h2>Product List</h2>
 
 <table class="table table-striped">
@@ -13,8 +15,12 @@
             <th>@Html.DisplayNameFor(model => model.Name)</th>
             <th>@Html.DisplayNameFor(model => model.Price)</th>
             <th>Country of Origin</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <th>Edit</th>
+                <th>Delete</th>
+            }
+
         </tr>
     </thead>
     <tbody>
@@ -24,8 +30,12 @@
                 <td>@Html.ActionLink(product.Name, "Details", new { id = product.ProductId})</td>
                 <td>@product.Price.ToString("C2")</td>
                 <td>@Html.DisplayFor(model => product.CountryOrigin)</td>
-                <td><button class="btn btn-warning" onclick="location.href='@Url.Action("Edit", new { id = product.ProductId })'">Edit</button></td>
-                <td><button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = product.ProductId })'">Delete</button></td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td><button class="btn btn-warning" onclick="location.href='@Url.Action("Edit", new { id = product.ProductId })'">Edit</button></td>
+                    <td><button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = product.ProductId })'">Delete</button></td>
+                }
+                
             </tr>
         }
     </tbody>
