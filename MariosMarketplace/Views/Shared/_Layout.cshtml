@@ -25,10 +25,11 @@
             <div class="navbar-nav center-welcome">
                 Welcome, @User.Identity.Name
             </div>
+            <div class="navbar-nav">@Html.ActionLink("Add Product", "Create", "Products")</div>
+
             @using (Html.BeginForm("LogOff", "Account"))
             {
                 <input type="submit" class="nav-item btn btn-logoff" value="Log out" />
-                
             }
         }
         else

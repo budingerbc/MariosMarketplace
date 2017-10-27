@@ -22,7 +22,7 @@
         {
             <tr>
                 <td>@Html.ActionLink(product.Name, "Details", new { id = product.ProductId})</td>
-                <td>$@Html.DisplayFor(model => product.Price)</td>
+                <td>@product.Price.ToString("C2")</td>
                 <td>@Html.DisplayFor(model => product.CountryOrigin)</td>
                 <td><button class="btn btn-warning" onclick="location.href='@Url.Action("Edit", new { id = product.ProductId })'">Edit</button></td>
                 <td><button class="btn btn-danger" onclick="location.href='@Url.Action("Delete", new { id = product.ProductId })'">Delete</button></td>
