@@ -4,8 +4,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using MariosMarketplace.Models;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace MariosMarketplace
 {
@@ -28,6 +30,10 @@ namespace MariosMarketplace
                     .AddDbContext<MariosMarketplaceContext>(options =>
                                               options
                                                    .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+             .AddEntityFrameworkStores<MariosMarketplaceContext>()
+             .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,7 +47,7 @@ namespace MariosMarketplace
                 app.UseDeveloperExceptionPage();
             }
 
-
+            app.UseIdentity();
 
             app.UseMvc(routes =>
             {

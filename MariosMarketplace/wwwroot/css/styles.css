@@ -38,3 +38,18 @@ h2 {
 h3.card-title.center {
     text-align: center;
 }
+
+.center-welcome {
+    padding: 0px 20px;
+}
+
+.btn-logoff {
+    margin-left: 10px;
+    background-color: none;
+    background: none !important;
+}
+
+.btn-logoff:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
