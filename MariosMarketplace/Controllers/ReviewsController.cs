@@ -40,16 +40,21 @@ namespace MariosMarketplace.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Review review)
+        public IActionResult Create(int ProductId, string author, string content, int rating)
         {
-            if (ModelState.IsValid)
+            bool verify_author = author.Length != 0;
+            bool verify_content = (content.Length >= 50 && content.Length <= 250);
+            bool verify_rating = (rating >= 1 && rating <= 5);
+
+            if (verify_author && verify_content && verify_rating)
             {
-                reviewRepo.Save(review);
-                return RedirectToAction("Details", "Products", new { id = review.ProductId });
+                Review newReview = new Review(author, content, rating, ProductId);
+                reviewRepo.Save(newReview);
+                return RedirectToAction("Details", "Products", new { id = newReview.ProductId });
             }
             else
             {
-                return View("Error", review);
+                return View("Error");
             }
         }
 

@@ -1,20 +1,42 @@
 ﻿@model MariosMarketplace.Models.Review
 
+<script type="text/javascript">
+    $('.create-request').submit(function (event) {
+        event.preventDefault();
+        $.ajax({
+            url: '@Url.Action("Create")',
+            type: 'POST',
+            dataType: 'json',
+            data: $(this).serialize(),
+            success: function (result) {
+                var resultMessage = 'You\'ve added a new review!<br>';
+                $('#review-added').html(resultMessage);
+
+            }
+        });
+    });
+</script>
+
 <h2>Add a review for @ViewBag.product.Name.ToLower()</h2>
-@using (Html.BeginForm())
-{
+
+<form action="Create" class="create-request">
+    
     <input type="hidden" name="ProductId" value="@ViewBag.product.ProductId" />
 
-    @Html.LabelFor(model => model.Author)
-    @Html.EditorFor(model => model.Author)
+    <label for="author">Author: </label>
+    <input type="text" name="author" />
 
-    @Html.LabelFor(model => model.Content)
-    @Html.TextAreaFor(model => model.Content)
+    <label for="content">Review: </label>
+    <textarea name="content"></textarea>
 
-    @Html.LabelFor(model => model.Rating)
-    @Html.EditorFor(model => model.Rating)
+    <label for="rating">Rating (1-5): </label>
+    <input type="number" name="rating" />
 
     <input class="btn btn-info" type="submit" value="Create" />
     <input type="button" class="btn btn-warning" value="Back" onclick="location.href='@Url.Action("Details", "Products", new { id = @ViewBag.product.ProductId })'" />
-}
+    
+</form>
+
+<div id="review-added"></div>
+
 
