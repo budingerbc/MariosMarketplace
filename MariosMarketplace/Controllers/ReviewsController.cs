@@ -42,6 +42,10 @@ namespace MariosMarketplace.Controllers
         [HttpPost]
         public IActionResult Create(int ProductId, string author, string content, int rating)
         {
+            if (author == null || content == null)
+            {
+                return RedirectToAction("Error");
+            }
             bool verify_author = author.Length != 0;
             bool verify_content = (content.Length >= 50 && content.Length <= 250);
             bool verify_rating = (rating >= 1 && rating <= 5);
